@@ -7,7 +7,6 @@ use crate::strategy::base::StrategyType;
 use anchor_lang::prelude::*;
 use context::*;
 use std::convert::TryFrom;
-use std::str::FromStr;
 
 #[cfg(feature = "staging")]
 declare_id!("6YRZW57XsrT2DxSNLXHHQd4QmiqBode4d6btASkRqcFo");
@@ -24,8 +23,11 @@ pub const PERFORMANCE_FEE_DENOMINATOR: u128 = 10000u128;
 //     &[b"vault".as_ref(), token_mint.as_ref(), get_base_key().as_ref()],
 //     &program_client.id(),
 // );
-pub fn get_base_key() -> Pubkey {
-    Pubkey::from_str("HWzXGcGHy4tcpYfaRDCyLNzXqBTv3E6BttpCH2vJxArv").unwrap()
+
+pub mod base_key {
+    use anchor_lang::prelude::*;
+
+    declare_id!("HWzXGcGHy4tcpYfaRDCyLNzXqBTv3E6BttpCH2vJxArv");
 }
 
 #[program]
